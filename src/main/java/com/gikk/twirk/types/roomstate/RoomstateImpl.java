@@ -6,12 +6,14 @@ class RoomstateImpl implements Roomstate {
 	private static final String SUBS_IDENTIFIER = "subs-only=";
 	private static final String SLOW_IDENTIFIER = "slow=";
 	private static final String FOLLOWERS_IDENTIFIER = "followers-only=";
+	private static final String EMOTE_ONLY_IDENTIFIER = "emote-only=";
 
 	private final String broadcasterLanguage;
 	private final int r9kMode;
 	private final int subMode;
 	private final int slowModeTimer;
 	private final int followersMode;
+	private final int emoteOnlyMode;
 	private final String rawLine;
 
 	RoomstateImpl(DefaultRoomstateBuilder builder){
@@ -20,6 +22,7 @@ class RoomstateImpl implements Roomstate {
 		this.subMode = builder.subMode;
 		this.slowModeTimer = builder.slowModeTimer;
 		this.followersMode = builder.followersMode;
+		this.emoteOnlyMode = builder.emoteOnlyMode;
 		this.rawLine = builder.rawLine;
 	}
 
@@ -44,6 +47,11 @@ class RoomstateImpl implements Roomstate {
 	}
 
 	@Override
+	public int getEmoteOnlyMode() {
+		return emoteOnlyMode;
+	}
+
+	@Override
 	public int getSlowModeTimer() {
 		return slowModeTimer;
 	}
@@ -57,7 +65,9 @@ class RoomstateImpl implements Roomstate {
 			   + " " +
 			   (subMode == 0 ? "" : (SUBS_IDENTIFIER + subMode))
 			   + " " +
-			   (followersMode == -1 ? "" : (FOLLOWERS_IDENTIFIER + followersMode));
+			   (followersMode == -1 ? "" : (FOLLOWERS_IDENTIFIER + followersMode))
+			   + " " +
+				(emoteOnlyMode == 0 ? "" : (EMOTE_ONLY_IDENTIFIER + emoteOnlyMode));
 	}
 
 	@Override
