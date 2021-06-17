@@ -4,10 +4,10 @@
 
     <groupId>com.gikk</groupId>
     <artifactId>twirc</artifactId>
-    <version>0.6.3</version>
+    <version>0.7.1</version>
     <packaging>jar</packaging>
 
-    <name>twirc</name>
+    <name>twitch-api-java</name>
     <url>http://maven.apache.org</url>
 
     <repositories>
